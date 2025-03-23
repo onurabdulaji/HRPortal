@@ -8,6 +8,8 @@ using HRPortal.Domain.Interfaces.IUnitOfWorks;
 using HRPortal.Persistence.Context.Data;
 using HRPortal.Persistence.Repositories.GenericRepository.ReadRepository;
 using HRPortal.Persistence.Repositories.GenericRepository.WriteRepository;
+using HRPortal.Persistence.Repositories.Repositories.AppRoleRepository;
+using HRPortal.Persistence.Repositories.Repositories.AppUserRepository;
 
 namespace HRPortal.Persistence.Repositories.UnitOfWorks;
 
@@ -15,6 +17,18 @@ public class UnitOfWork : IUnitOfWork
 {
     protected readonly AppDbContext _context;
     protected readonly Dictionary<Type, object> _repositories = new(); // Singleton Pattern
+
+    IReadAppRoleRepository IUnitOfWork.TGetReadAppRoleRepository => throw new NotImplementedException();
+
+    IWriteAppRoleRepository IUnitOfWork.TGetWriteAppRoleRepository => GetOrCreateRepository<IWriteAppRoleRepository, WriteAppRoleRepository>();
+
+    IReadAppUserRepository IUnitOfWork.TGetReadAppUserRepository => throw new NotImplementedException();
+
+    IWriteAppUserRepository IUnitOfWork.TGetWriteAppUserRepository =>  GetOrCreateRepository<IWriteAppUserRepository, WriteAppUserRepository>();
+
+    IReadEmployeeRepository IUnitOfWork.TGetReadEmployeeRepository => throw new NotImplementedException();
+
+    IWriteEmployeeRepository IUnitOfWork.TGetWriteEmployeeRepository => throw new NotImplementedException();
 
     public UnitOfWork(AppDbContext context)
     {
@@ -64,35 +78,5 @@ public class UnitOfWork : IUnitOfWork
             throw new Exception($"Database CRUD Error : {ex.Message}");
         }
 
-    }
-
-    public IReadAppRoleRepository TGetReadAppRoleRepository()
-    {
-        throw new NotImplementedException();
-    }
-
-    public IWriteAppRoleRepository TGetWriteAppRoleRepository()
-    {
-        throw new NotImplementedException();
-    }
-
-    public IReadAppUserRepository TGetReadAppUserRepository()
-    {
-        throw new NotImplementedException();
-    }
-
-    public IWriteAppUserRepository TGetWriteAppUserRepository()
-    {
-        throw new NotImplementedException();
-    }
-
-    public IReadEmployeeRepository TGetReadEmployeeRepository()
-    {
-        throw new NotImplementedException();
-    }
-
-    public IWriteEmployeeRepository TGetWriteEmployeeRepository()
-    {
-        throw new NotImplementedException();
     }
 }

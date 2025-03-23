@@ -12,11 +12,11 @@ public interface IUnitOfWork : IDisposable, IAsyncDisposable
     IReadGenericRepository<T> GetReadGenericRepository<T>() where T : class, IBaseEntity, new();
     IWriteGenericRepository<T> GetWriteGenericRepository<T>() where T : class, IBaseEntity, new();
     Task<int> SaveAsync();
-    IReadAppRoleRepository TGetReadAppRoleRepository();
-    IWriteAppRoleRepository TGetWriteAppRoleRepository();
-    IReadAppUserRepository TGetReadAppUserRepository();
-    IWriteAppUserRepository TGetWriteAppUserRepository();
-    IReadEmployeeRepository TGetReadEmployeeRepository();
-    IWriteEmployeeRepository TGetWriteEmployeeRepository();
+    IReadAppRoleRepository TGetReadAppRoleRepository { get; }
+    IWriteAppRoleRepository TGetWriteAppRoleRepository { get; }
+    IReadAppUserRepository TGetReadAppUserRepository { get; }
+    IWriteAppUserRepository TGetWriteAppUserRepository { get; }
+    IReadEmployeeRepository TGetReadEmployeeRepository { get; }
+    IWriteEmployeeRepository TGetWriteEmployeeRepository { get; }
 
 }

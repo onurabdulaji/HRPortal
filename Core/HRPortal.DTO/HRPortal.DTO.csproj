@@ -13,7 +13,10 @@
 
   <ItemGroup>
     <Folder Include="DTO\Response\" />
-    <Folder Include="DTO\Request\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HRPortal.Domain\HRPortal.Domain.csproj" />
   </ItemGroup>
 
 </Project>

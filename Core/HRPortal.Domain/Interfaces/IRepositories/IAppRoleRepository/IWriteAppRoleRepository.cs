@@ -5,4 +5,5 @@ namespace HRPortal.Domain.Interfaces.IRepositories.IAppRoleRepository;
 
 public interface IWriteAppRoleRepository : IWriteGenericRepository<AppRole>
 {
+    Task<AppRole> CreateRole(AppRole appRole);
 }

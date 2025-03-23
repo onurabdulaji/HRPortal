@@ -20,6 +20,7 @@ builder.Services.AddMapsterExtension();
 #region ApplicationExtension
 builder.Services.AddMediatorExtension();
 builder.Services.AddFluentValidationExtension();
+builder.Services.AddServiceAndManagersExtensions();
 #endregion
 
 builder.Services.AddControllers();
