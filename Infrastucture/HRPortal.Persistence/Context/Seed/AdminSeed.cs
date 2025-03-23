@@ -18,8 +18,8 @@ public class AdminSeed
         var adminRole = await _unitOfWork.TGetReadAppRoleRepository.GetEntityAsync(r => r.Roles.GetType);
         if (adminRole == null)
         {
-            adminRole = new AppRole { Name = "Admin", Description = "Yönetici Rolü" };
-            _unitOfWork.AppRoleRepository.Add(adminRole);
+            adminRole = new AppRole { Title = "Admin"};
+            _unitOfWork.TGetWriteAppRoleRepository.CreateRole(adminRole);
             await _unitOfWork.SaveAsync();
         }
     }
